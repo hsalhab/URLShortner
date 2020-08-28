@@ -20,6 +20,13 @@ function App() {
       <h1>URL Shortner</h1>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField id="outlined-basic" label="Enter your URL" variant="outlined" />
+        <Button variant="contained">Default</Button>
+        <Button variant="contained" color="primary">
+          Primary
+        </Button>
+        <Button variant="contained" color="secondary">
+          Secondary
+        </Button>
       </form>
     </div>
   );
