@@ -112,7 +112,7 @@ width: "100%"
     return (
       <div style={styles.Home}>
         <div style={styles.primaryDiv}>
-          <h1 style={styles.h1} >URL Shortner</h1>
+          <h1 style={styles.h1} >Toolong URL Shortner</h1>
           <p style={styles.p}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
           </p>
