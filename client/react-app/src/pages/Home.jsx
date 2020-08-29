@@ -1,6 +1,39 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { withStyles } from "@material-ui/core/styles";
+
+const myStyles = theme => ({
+  root: {
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#EAF6FF"
+    },
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#EAF6FF"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#EAF6FF"
+    },
+    "& .MuiOutlinedInput-input": {
+      color: "#EAF6FF"
+    },
+    "&:hover .MuiOutlinedInput-input": {
+      color: "#EAF6FF"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      color: "#EAF6FF"
+    },
+    "& .MuiInputLabel-outlined": {
+      color: "#EAF6FF"
+    },
+    "&:hover .MuiInputLabel-outlined": {
+      color: "#EAF6FF"
+    },
+    "& .MuiInputLabel-outlined.Mui-focused": {
+      color: "#EAF6FF"
+    }
+  }
+});
 
 class Home extends Component {
   constructor() {
@@ -22,7 +55,11 @@ class Home extends Component {
     // event.preventDefault();
   }
 
+  
+
   render() {
+
+    const { classes } = this.props;
     const styles = {
       Home: {
         display: "flex",
@@ -31,38 +68,43 @@ class Home extends Component {
         justifyContent: "center",
       },
       TextField: {
-        margin: "2%",
         width: "50%",
       },
-
+      SubmitButton: {
+        marginBottom: "5%",
+        marginTop: "2%"
+      },
       primaryDiv: {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "8%",
+
         color: "#EAF6FF",
         backgroundColor: "#232528",
-        width: "100%",
+width: "100%"
       },
       secondaryDiv: {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "8%",
+
         color: "#232528",
         backgroundColor: "#EAF6FF",
-        width: "100%",
+        width: "100%"
       },
       p: {
         color: "#878E94",
         textAlign: "center",
-        width: "70%"
+        width: "70%",
+        marginBottom: "5%",
+        marginTop: "3%"
       },
       h1: {
         fontSize: "calc(30px + 2vmin)",
         margin: "1%",
+        marginTop: "8%"
       }
 
     };
@@ -74,8 +116,8 @@ class Home extends Component {
           <p style={styles.p}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
           </p>
-          <TextField style={styles.TextField} id="outlined-basic" label="Enter your URL" variant="outlined" onChange={this.handleChange} />
-          <Button style={styles.SubmitButton} variant="contained" color="primary" onClick={this.handleSubmit}>
+          <TextField className={classes.root} style={styles.TextField}  id="outlined-basic" label="Enter your URL" variant="outlined" onChange={this.handleChange} />
+          <Button style={styles.SubmitButton} color="secondary" variant="contained" onClick={this.handleSubmit}>
             Shorten!
           </Button>
         </div>
@@ -93,4 +135,4 @@ class Home extends Component {
 
 }
 
-export default Home;
+export default withStyles(myStyles, { withTheme: true })(Home);

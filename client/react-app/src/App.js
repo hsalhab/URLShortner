@@ -1,5 +1,7 @@
 import React from 'react';
 import Home from './pages/Home';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 function App() {
   const styles = {
@@ -9,10 +11,26 @@ function App() {
     }
   };
 
+  const theme = createMuiTheme({
+    palette: {
+      default: {
+        main: '#EAF6FF',
+      },
+      primary: {
+        main: '#EAF6FF',
+      },
+      secondary: {
+        main: '#2A2A72',
+      },
+    },
+  });
+
   return (
-    <div style={styles.App}>
-      <Home></Home>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div style={styles.App}>
+        <Home></Home>
+      </div>
+    </ThemeProvider>
   );
 }
 
