@@ -39,21 +39,31 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      url: ""
+      url: "",
+      shortURL: ""
     };
   }
 
   handleChange = (event) => {
     this.setState({
+      ...this.state,
       url: event.target.value
     });
   }
 
   handleSubmit = () => {
-    const response = `URL is: ${this.state.url}, now send it to the server!`;
+    // const response = `URL is: ${this.state.url}, now send it to the server!`;
     
     fetch(`/shorten?url=${this.state.url}`)
-        .then(response => console.log(response.ok));
+        .then(async response => {
+          if (response.ok) {
+            const responseJSON = await response.json();
+            this.setState({
+              ...this.state,
+              shortURL: `/r/${responseJSON.shortURL}`
+            });
+          }
+        });
     // event.preventDefault();
   }
 
@@ -73,7 +83,7 @@ class Home extends Component {
         width: "50%",
       },
       SubmitButton: {
-        marginBottom: "5%",
+        marginBottom: "2%",
         marginTop: "2%"
       },
       primaryDiv: {
@@ -122,6 +132,9 @@ width: "100%"
           <Button style={styles.SubmitButton} color="secondary" variant="contained" onClick={this.handleSubmit}>
             Shorten!
           </Button>
+          {this.state.shortURL && <p style={styles.p}>
+            Your short URL is: <a style={styles.p} href={this.state.shortURL}>{this.state.shortURL}</a>
+          </p>}
         </div>
         <div style={styles.secondaryDiv}>
           <h1 style={styles.h1} >Who Are We?</h1>
