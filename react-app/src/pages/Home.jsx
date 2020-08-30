@@ -51,7 +51,9 @@ class Home extends Component {
 
   handleSubmit = () => {
     const response = `URL is: ${this.state.url}, now send it to the server!`;
-    alert(response);
+    
+    fetch(`/shorten?url=${this.state.url}`)
+        .then(response => console.log(response.ok));
     // event.preventDefault();
   }
 
