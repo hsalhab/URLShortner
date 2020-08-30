@@ -4,7 +4,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
 function App() {
-  document.title = "Toolong URL Shortener"
   const styles = {
     App: {
       minHeight: "100vh",
